@@ -31,8 +31,7 @@ namespace MatchStatistic.WebApi.Services
         {
             Client.BaseAddress = new Uri($"https://{server}.api.riotgames.com/lol/");
 
-            var response = await Client.GetAsync(
-                $"summoner/v4/summoners/by-name/{summName}");
+            var response = await Client.GetAsync($"summoner/v4/summoners/by-name/{summName}");
 
             response.EnsureSuccessStatusCode();
 
