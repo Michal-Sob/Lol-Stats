@@ -12,7 +12,6 @@ import { FetchDataComponent } from './fetch-data/fetch-data.component';
 import { SummonerFormComponent } from './summoner-form/summoner-form.component';
 import { AccountService } from './services/account.service';
 import { AccountComponent } from './account/account.component';
-import { SummonerDTO } from './models/SummonerDTO';
 
 
 
@@ -39,7 +38,7 @@ import { SummonerDTO } from './models/SummonerDTO';
 
     ])
   ],
-  providers: [AccountService, SummonerDTO],
+  providers: [AccountService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

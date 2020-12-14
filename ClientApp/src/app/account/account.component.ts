@@ -15,22 +15,10 @@ export class AccountComponent {
     private accountService: AccountService) {
     http.get<SummonerDTO>(baseUrl + "api/" + "Summoner").subscribe(result => {
       this.summoner = result,
-        console.log(this.summoner),
         err => console.log(err),
-        () => console.log("done fucking ass")
+        () => console.log("Request Done")
     })
   }
-
-  public Account: SummonerDTO;
-
-  //ngOnInit() {
-  //  this.accountService.GetAccountBySummName("Paczatek")
-  //    .subscribe(
-  //      data => this.Account = data,
-  //      err => console.log(err),
-  //      () => console.log("all done getting readers")
-  //    )
-  //}
 }
 
 interface account {
