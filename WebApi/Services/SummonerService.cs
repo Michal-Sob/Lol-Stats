@@ -15,30 +15,40 @@ namespace MatchStatistic.WebApi.Services
 
         public SummonerService(HttpClient client)
         {
-            client.BaseAddress = new Uri("https://eun1.api.riotgames.com/lol/");
+            //client.BaseAddress = new Uri("https://eun1.api.riotgames.com/lol/");
             // GitHub API versioning
             //client.DefaultRequestHeaders.Add("Accept",
             //    "application/vnd.github.v3+json");
             //// GitHub requires a user-agent
             //client.DefaultRequestHeaders.Add("User-Agent",
             //    "HttpClientFactory-Sample");
-            client.DefaultRequestHeaders.Add("X-Riot-Token", "RGAPI-1affde34-c03e-4ac6-843a-048e850d2044"); //Put your API key
+            client.DefaultRequestHeaders.Add("X-Riot-Token", "RGAPI-1590f481-1a08-44bd-a914-07ac07f8c812"); //Put your API key
 
             Client = client;
         }
 
         public async Task<SummonerDTO> GetSummByName(string server, string summName)
         {
-            Client.BaseAddress = new Uri($"https://{server}.api.riotgames.com/lol/");
-
-            var response = await Client.GetAsync($"summoner/v4/summoners/by-name/{summName}");
+            var response = await Client.GetAsync($"https://{server}.api.riotgames.com/lol/summoner/v4/summoners/by-name/{summName}");
 
             response.EnsureSuccessStatusCode();
 
-            Console.WriteLine(response.Headers);
-            Console.WriteLine(await response.Content.ReadAsStringAsync());
-
+			Console.WriteLine(await response.Content.ReadAsStringAsync());
             return await response.Content.ReadAsAsync<SummonerDTO>();
         }
-    }
+
+
+		public async Task<LeagueEntryDTO[]> GetLeaguesByName(string server, string summName)
+		{
+			SummonerDTO summDTO = await GetSummByName(server, summName);
+
+            var response = await Client.GetAsync($"https://{server}.api.riotgames.com/lol/league/v4/entries/by-summoner/{summDTO.Id}");
+
+            response.EnsureSuccessStatusCode();
+
+            Console.WriteLine(await response.Content.ReadAsStringAsync());
+
+            return await response.Content.ReadAsAsync<LeagueEntryDTO[]>();
+		}
+	}
 }

@@ -1,7 +1,6 @@
 import { Component, Inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { SummonerDTO } from '../models/SummonerDTO';
-import { AccountService } from '../services/account.service';
 
 @Component({
   selector: 'app-account',
@@ -11,22 +10,12 @@ export class AccountComponent {
 
   public summoner: SummonerDTO;
 
-  constructor(http: HttpClient, @Inject('BASE_URL') baseUrl: string,
-    private accountService: AccountService) {
-    http.get<SummonerDTO>(baseUrl + "api/" + "Summoner").subscribe(result => {
+  constructor(http: HttpClient, @Inject('BASE_URL') baseUrl: string) {
+    http.get<SummonerDTO>(baseUrl + "api/" + "Summoner/"+ "eun1/" + "Paczatek").subscribe(result => {
       this.summoner = result,
+        console.log(result),
         err => console.log(err),
         () => console.log("Request Done")
     })
   }
-}
-
-interface account {
-  id: string;
-  accountId: string;
-  puuid: string;
-  name: string;
-  profileIconId: number;
-  revisionDate: number;
-  summonerLevel: number;
 }

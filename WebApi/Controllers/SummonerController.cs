@@ -26,8 +26,16 @@ namespace MatchStatistic.WebApi.Controllers
 		[HttpGet]
 		public async Task<ActionResult<SummonerDTO>> Get()
 		{
-			//Task<ActionResult<SummonerDTO>>
 			var results = await _summonerService.GetSummByName("eun1", "Paczatek");
+
+			return results;
+		}
+
+		// GET: api/summoner/{server}/{summName}
+		[HttpGet("{server}/{summName}")]
+		public async Task<ActionResult<LeagueEntryDTO[]>> Get(string server, string summName)
+		{
+			var results = await _summonerService.GetLeaguesByName(server, summName);
 
 			return results;
 		}
