@@ -1,0 +1,21 @@
+<h1>account</h1>
+
+<h2>{{summoner.id}}</h2>
+<table class='table table-striped' aria-labelledby="tableLabel" *ngIf="summoner">
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Puuid</th>
+      <th>Account ID</th>
+      <th>Profile Icon</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>{{ summoner.id }}</td>
+      <td>{{ summoner.puuid }}</td>
+      <td>{{ summoner.accountId }}</td>
+      <td>{{ summoner.profileIconId }}</td>
+    </tr>
+  </tbody>
+</table>

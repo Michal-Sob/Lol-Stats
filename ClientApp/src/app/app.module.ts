@@ -10,6 +10,9 @@ import { HomeComponent } from './home/home.component';
 import { CounterComponent } from './counter/counter.component';
 import { FetchDataComponent } from './fetch-data/fetch-data.component';
 import { SummonerFormComponent } from './summoner-form/summoner-form.component';
+import { AccountService } from './services/account.service';
+import { AccountComponent } from './account/account.component';
+
 
 
 @NgModule({
@@ -19,7 +22,8 @@ import { SummonerFormComponent } from './summoner-form/summoner-form.component';
     HomeComponent,
     CounterComponent,
     FetchDataComponent,
-    SummonerFormComponent
+    SummonerFormComponent,
+    AccountComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -30,10 +34,11 @@ import { SummonerFormComponent } from './summoner-form/summoner-form.component';
       { path: 'counter', component: CounterComponent },
       { path: 'fetch-data', component: FetchDataComponent },
       { path: 'summoner-form', component: SummonerFormComponent },
-      
+      { path: 'account', component: AccountComponent }
+
     ])
   ],
-  providers: [],
+  providers: [AccountService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
