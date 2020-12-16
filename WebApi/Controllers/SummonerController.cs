@@ -37,6 +37,10 @@ namespace MatchStatistic.WebApi.Controllers
 		{
 			var results = await _summonerService.GetLeaguesByName(server, summName);
 
+			//Console.WriteLine(results[0].MiniSeries.Progress);
+			//Console.WriteLine(results[0].MiniSeries.Wins);
+			//Console.WriteLine(results[0].Wins);
+
 			return results;
 		}
 

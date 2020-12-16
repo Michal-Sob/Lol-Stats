@@ -22,7 +22,7 @@ namespace MatchStatistic.WebApi.Services
             //// GitHub requires a user-agent
             //client.DefaultRequestHeaders.Add("User-Agent",
             //    "HttpClientFactory-Sample");
-            client.DefaultRequestHeaders.Add("X-Riot-Token", "RGAPI-1590f481-1a08-44bd-a914-07ac07f8c812"); //Put your API key
+            client.DefaultRequestHeaders.Add("X-Riot-Token", "RGAPI-8ecf237a-599d-4841-a7d5-053a637df277"); //Put your API key
 
             Client = client;
         }
@@ -47,7 +47,7 @@ namespace MatchStatistic.WebApi.Services
             response.EnsureSuccessStatusCode();
 
             Console.WriteLine(await response.Content.ReadAsStringAsync());
-
+			
             return await response.Content.ReadAsAsync<LeagueEntryDTO[]>();
 		}
 	}

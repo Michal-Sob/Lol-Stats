@@ -1,6 +1,6 @@
 import { Component, Inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { SummonerDTO } from '../models/SummonerDTO';
+import { Summoner } from '../models/summoner.model';
 
 @Component({
   selector: 'app-account',
@@ -8,10 +8,10 @@ import { SummonerDTO } from '../models/SummonerDTO';
 })
 export class AccountComponent {
 
-  public summoner: SummonerDTO;
+  public summoner: Summoner;
 
   constructor(http: HttpClient, @Inject('BASE_URL') baseUrl: string) {
-    http.get<SummonerDTO>(baseUrl + "api/" + "Summoner/"+ "eun1/" + "Paczatek").subscribe(result => {
+    http.get<Summoner>(baseUrl + "api/" + "Summoner/"+ "eun1/" + "Paczatek").subscribe(result => {
       this.summoner = result,
         console.log(result),
         err => console.log(err),

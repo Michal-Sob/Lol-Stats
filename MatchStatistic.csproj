@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
@@ -27,15 +27,19 @@
 
   <ItemGroup>
     <None Remove="ClientApp\src\app\account\account.component.ts" />
+    <None Remove="ClientApp\src\app\models\account.model.ts" />
+    <None Remove="ClientApp\src\app\models\leagueEntry.model.ts" />
+    <None Remove="ClientApp\src\app\models\miniseries.model.ts" />
     <None Remove="ClientApp\src\app\models\summoner.model.ts" />
-    <None Remove="ClientApp\src\app\models\SummonerDTO.ts" />
     <None Remove="ClientApp\src\app\summoner-form\Summoner.ts" />
   </ItemGroup>
 
   <ItemGroup>
     <TypeScriptCompile Include="ClientApp\src\app\account\account.component.ts" />
-    <TypeScriptCompile Include="ClientApp\src\app\models\SummonerDTO.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\models\leagueEntry.model.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\models\miniseries.model.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\models\summoner.model.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\models\account.model.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\summoner-form\Summoner.ts" />
   </ItemGroup>
 
