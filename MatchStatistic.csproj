@@ -13,6 +13,8 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.AspNet.WebApi.Client" Version="5.2.7" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Abstractions" Version="2.2.0" />
     <PackageReference Include="Microsoft.AspNetCore.SpaServices.Extensions" Version="3.1.5" />
   </ItemGroup>
 
@@ -24,11 +26,25 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="ClientApp\src\app\account\account.component.ts" />
+    <None Remove="ClientApp\src\app\models\account.model.ts" />
+    <None Remove="ClientApp\src\app\models\leagueEntry.model.ts" />
+    <None Remove="ClientApp\src\app\models\miniseries.model.ts" />
+    <None Remove="ClientApp\src\app\models\summoner.model.ts" />
     <None Remove="ClientApp\src\app\summoner-form\Summoner.ts" />
   </ItemGroup>
 
   <ItemGroup>
+    <TypeScriptCompile Include="ClientApp\src\app\account\account.component.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\models\leagueEntry.model.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\models\miniseries.model.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\models\summoner.model.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\models\account.model.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\summoner-form\Summoner.ts" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="ClientApp\src\app\services\" />
   </ItemGroup>
 
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">

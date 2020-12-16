@@ -1,3 +1,4 @@
+using MatchStatistic.WebApi.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -26,6 +27,8 @@ namespace MatchStatistic
             {
                 configuration.RootPath = "ClientApp/dist";
             });
+            services.AddHttpClient();
+            services.AddHttpClient<SummonerService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
