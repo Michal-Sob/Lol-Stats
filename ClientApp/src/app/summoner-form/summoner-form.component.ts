@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Summoner } from './Summoner';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-summoner-form',
@@ -8,8 +9,11 @@ import { Summoner } from './Summoner';
 })
 /** summoner-form component*/
 export class SummonerFormComponent {
-  serverLocations = ['EU-W', 'EU-NE',
+  serverLocations = ['euw1', 'EUN1',
     'NA', 'ASIA'];
+  constructor(
+    private router: Router //instanciate a router
+  ) { };
 
   model = new Summoner('', this.serverLocations[0]);
 
@@ -19,6 +23,7 @@ export class SummonerFormComponent {
     console.log(this.model.name);
     console.log(this.model.serverLocation);
     this.submitted = true;
+    this.router.navigateByUrl('/account/'+this.model.serverLocation+'/'+this.model.name);
   }
 
   

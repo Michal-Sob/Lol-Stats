@@ -16,16 +16,19 @@
 
       <div class="form-group">
         <label for="power">Location</label>
-        <select class="form-control" id="serverLocation" required>
+        <select class="form-control" id="serverLocation" required
+                [(ngModel)]="model.serverLocation" name="serverLocation"
+               #name="ngModel">
           <option *ngFor="let loc of serverLocations" [value]="loc">{{loc}}</option>
         </select>
       </div>
 
 
+
       
-
-      <button type="submit" class="btn btn-success" [disabled]="!summonerForm.form.valid">Submit</button>
-
+        
+        <button type="submit"  class="btn btn-success" [disabled]="!summonerForm.form.valid">Submit</button>
+      
     </form>
   </div>
   </div>

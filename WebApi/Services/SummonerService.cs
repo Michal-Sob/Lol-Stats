@@ -22,15 +22,20 @@ namespace MatchStatistic.WebApi.Services
             //// GitHub requires a user-agent
             //client.DefaultRequestHeaders.Add("User-Agent",
             //    "HttpClientFactory-Sample");
-            client.DefaultRequestHeaders.Add("X-Riot-Token", "RGAPI-8ecf237a-599d-4841-a7d5-053a637df277"); //Put your API key
+            client.DefaultRequestHeaders.Add("X-Riot-Token", "RGAPI-c717e535-9771-458b-b257-b4cc5c3cac0e"); //Put your API key
 
             Client = client;
         }
 
+        
+
         public async Task<SummonerDTO> GetSummByName(string server, string summName)
         {
             var response = await Client.GetAsync($"https://{server}.api.riotgames.com/lol/summoner/v4/summoners/by-name/{summName}");
+            Console.WriteLine("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
+            Console.WriteLine(server);
 
+            Console.WriteLine(summName);
             response.EnsureSuccessStatusCode();
 
 			Console.WriteLine(await response.Content.ReadAsStringAsync());
