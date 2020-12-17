@@ -13,7 +13,7 @@ export class AccountComponent  {
   private server;
   private summonerName;
 
-  public summoner: LeagueEntryDTO;
+  public summoner: LeagueEntryDTO[];
 
   
     
@@ -22,7 +22,7 @@ export class AccountComponent  {
   constructor(http: HttpClient, @Inject('BASE_URL') baseUrl: string, private route: ActivatedRoute) {
     this.server = this.route.snapshot.paramMap.get("loc");
     this.summonerName = this.route.snapshot.paramMap.get("summonerName");
-    http.get<LeagueEntryDTO>(baseUrl + "api/" + "Summoner/"+ this.server + '/' + this.summonerName).subscribe(result => {
+    http.get<LeagueEntryDTO[]>(baseUrl + "api/" + "Summoner/"+ this.server + '/' + this.summonerName).subscribe(result => {
       this.summoner = result,
         console.log(result),
         err => console.log(err),
