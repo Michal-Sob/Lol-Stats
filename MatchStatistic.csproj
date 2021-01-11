@@ -27,10 +27,11 @@
 
   <ItemGroup>
     <None Remove="ClientApp\src\app\account\account.component.ts" />
-    <None Remove="ClientApp\src\app\models\account.model.ts" />
+    <None Remove="ClientApp\src\app\models\accData.model.ts" />
     <None Remove="ClientApp\src\app\models\leagueEntry.model.ts" />
     <None Remove="ClientApp\src\app\models\miniseries.model.ts" />
     <None Remove="ClientApp\src\app\models\summoner.model.ts" />
+    <None Remove="ClientApp\src\app\models\userSite.model.ts" />
     <None Remove="ClientApp\src\app\summoner-form\Summoner.ts" />
   </ItemGroup>
 
@@ -38,8 +39,9 @@
     <TypeScriptCompile Include="ClientApp\src\app\account\account.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\models\leagueEntry.model.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\models\miniseries.model.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\models\userSite.model.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\models\summoner.model.ts" />
-    <TypeScriptCompile Include="ClientApp\src\app\models\account.model.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\models\accData.model.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\summoner-form\Summoner.ts" />
   </ItemGroup>
 

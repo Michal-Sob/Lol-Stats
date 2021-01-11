@@ -1,7 +1,7 @@
 <h1>account</h1>
 
-<h2>{{summoner.id}}</h2>
-<table class='table table-striped' aria-labelledby="tableLabel" *ngIf="summoner">
+<h2>{{ userData.summoner.id }}</h2>
+<table class='table table-striped' aria-labelledby="tableLabel" *ngIf="userData.summoner">
   <thead>
     <tr>
       <th>Id</th>
@@ -12,10 +12,10 @@
   </thead>
   <tbody>
     <tr>
-      <td>{{ summoner.id }}</td>
-      <td>{{ summoner.puuid }}</td>
-      <td>{{ summoner.accountId }}</td>
-      <td>{{ summoner.profileIconId }}</td>
+      <td>{{ userData.summoner.id }}</td>
+      <td>{{ userData.summoner.puuid }}</td>
+      <td>{{ userData.summoner.accountId }}</td>
+      <td>{{ userData.summoner.profileIconId }}</td>
     </tr>
   </tbody>
 </table>

@@ -1,10 +1,10 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.LeagueEntryDTO = void 0;
-var LeagueEntryDTO = /** @class */ (function () {
-    function LeagueEntryDTO() {
+exports.LeagueEntry = void 0;
+var LeagueEntry = /** @class */ (function () {
+    function LeagueEntry() {
     }
-    return LeagueEntryDTO;
+    return LeagueEntry;
 }());
-exports.LeagueEntryDTO = LeagueEntryDTO;
-//# sourceMappingURL=LeagueEntryDTO.js.map
+exports.LeagueEntry = LeagueEntry;
+//# sourceMappingURL=leagueEntry.model.js.map

@@ -23,23 +23,19 @@ namespace MatchStatistic.WebApi.Controllers
 		}
 
 		// GET: api/<SummonerController>
-		[HttpGet]
-		public async Task<ActionResult<SummonerDTO>> Get()
-		{
-			var results = await _summonerService.GetSummByName("eun1", "Paczatek");
+		//[HttpGet("{server}/{summName}")]
+		//public async Task<ActionResult<SummonerDTO>> Get(string server, string summName)
+		//{
+		//	var results = await _summonerService.GetSummByName(server, summName);
 
-			return results;
-		}
+		//	return results;
+		//}
 
 		// GET: api/summoner/{server}/{summName}
 		[HttpGet("{server}/{summName}")]
-		public async Task<ActionResult<LeagueEntryDTO[]>> Get(string server, string summName)
+		public async Task<ActionResult<UserSiteDTO>> Get(string server, string summName)
 		{
-			var results = await _summonerService.GetLeaguesByName(server, summName);
-
-			//Console.WriteLine(results[0].MiniSeries.Progress);
-			//Console.WriteLine(results[0].MiniSeries.Wins);
-			//Console.WriteLine(results[0].Wins);
+			var results = await _summonerService.GetAllSummDetailsByName(server, summName);
 
 			return results;
 		}

@@ -1,1 +1,1 @@
-{"version":3,"file":"LeagueEntryDTO.js","sourceRoot":"","sources":["LeagueEntryDTO.ts"],"names":[],"mappings":";;;AAAA;IAAA;IAeA,CAAC;IAAD,qBAAC;AAAD,CAAC,AAfD,IAeC;AAfY,wCAAc"}
+{"version":3,"file":"leagueEntry.model.js","sourceRoot":"","sources":["leagueEntry.model.ts"],"names":[],"mappings":";;;AAEA;IAAA;IAeA,CAAC;IAAD,kBAAC;AAAD,CAAC,AAfD,IAeC;AAfY,kCAAW"}

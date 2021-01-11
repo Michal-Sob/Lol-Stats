@@ -1,4 +1,4 @@
-export class Summoner {
+export class accountData {
 
   //lol/summoner/v4/summoners/by-name/{summonerName}
   //lol/match/v4/matchlists/by-account/{encryptedAccountId}

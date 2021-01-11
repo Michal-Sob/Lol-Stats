@@ -22,7 +22,7 @@ namespace MatchStatistic.WebApi.Services
             //// GitHub requires a user-agent
             //client.DefaultRequestHeaders.Add("User-Agent",
             //    "HttpClientFactory-Sample");
-            client.DefaultRequestHeaders.Add("X-Riot-Token", "RGAPI-c717e535-9771-458b-b257-b4cc5c3cac0e"); //Put your API key
+            client.DefaultRequestHeaders.Add("X-Riot-Token", "RGAPI-dfe8b6ab-72f9-4a33-90ea-ecd9b71903cb"); //Put your API key
 
             Client = client;
         }
@@ -54,6 +54,23 @@ namespace MatchStatistic.WebApi.Services
             Console.WriteLine(await response.Content.ReadAsStringAsync());
 			
             return await response.Content.ReadAsAsync<LeagueEntryDTO[]>();
+		}
+
+        public async Task<UserSiteDTO> GetAllSummDetailsByName(string server, string summName)
+		{
+            var summAcc = await GetSummByName(server, summName);
+            var leagues = await GetLeaguesByName(server, summName);
+
+			UserSiteDTO userSiteDTO = new UserSiteDTO
+			{
+				summoner = summAcc,
+				leagueEntry = leagues
+			};
+
+			Console.WriteLine(userSiteDTO.leagueEntry[0].LeaguePoints);
+			Console.WriteLine(userSiteDTO.summoner.AccountId);
+
+			return userSiteDTO;
 		}
 	}
 }
