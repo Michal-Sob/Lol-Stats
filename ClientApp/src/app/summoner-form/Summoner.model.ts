@@ -1,10 +1,10 @@
-export class Summoner {
+export class SearchedSummoner {
 
   constructor(
-    
+
     public name: string,
     public serverLocation: string,
-    
+
   ) { }
 
 }

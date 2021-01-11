@@ -4,6 +4,7 @@ import { Summoner } from '../models/summoner.model';
 import { ActivatedRoute } from "@angular/router";
 import { LeagueEntry } from '../models/leagueEntry.model';
 import { UserSite } from '../models/userSite.model';
+import { GetServer } from '../util/Servers.enum';
 
 @Component({
   selector: 'app-account',
@@ -20,7 +21,7 @@ export class AccountComponent  {
     this.server = this.route.snapshot.paramMap.get("loc");
     this.summonerName = this.route.snapshot.paramMap.get("summonerName");
 
-    http.get<UserSite>(baseUrl + "api/" + "Summoner/" + this.server + '/' + this.summonerName).subscribe(result => {
+    http.get<UserSite>(baseUrl + "api/" + "Summoner/" + GetServer(this.server) + '/' + this.summonerName).subscribe(result => {
       this.userData = result,
         console.log(result),
         err => console.log(err),

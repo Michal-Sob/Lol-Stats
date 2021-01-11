@@ -7,4 +7,4 @@ var accountData = /** @class */ (function () {
     return accountData;
 }());
 exports.accountData = accountData;
-//# sourceMappingURL=account.model.js.map
+//# sourceMappingURL=accData.model.js.map

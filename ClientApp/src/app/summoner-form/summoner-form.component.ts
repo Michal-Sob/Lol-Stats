@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Summoner } from './Summoner';
+import { SearchedSummoner } from './Summoner.model';
 import { Router } from '@angular/router';
 
 @Component({
@@ -9,13 +9,14 @@ import { Router } from '@angular/router';
 })
 /** summoner-form component*/
 export class SummonerFormComponent {
-  serverLocations = ['euw1', 'EUN1',
-    'NA', 'ASIA'];
   constructor(
     private router: Router //instanciate a router
   ) { };
 
-  model = new Summoner('', this.serverLocations[0]);
+  serverLocations = ['EUW', 'EUNE',
+    'NA', 'KR', 'OCE', 'JP', 'RU', 'LAS', 'LAN', 'BR'];
+
+  model = new SearchedSummoner('', this.serverLocations[0]);
 
   submitted = false;
 
@@ -25,6 +26,4 @@ export class SummonerFormComponent {
     this.submitted = true;
     this.router.navigateByUrl('/account/'+this.model.serverLocation+'/'+this.model.name);
   }
-
-  
 }
