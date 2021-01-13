@@ -21,7 +21,7 @@ export class AccountComponent  {
     this.server = this.route.snapshot.paramMap.get("loc");
     this.summonerName = this.route.snapshot.paramMap.get("summonerName");
 
-    http.get<UserSite>(baseUrl + "api/" + "Summoner/" + GetServer(this.server) + '/' + this.summonerName).subscribe(result => {
+    http.get<UserSite>(`${baseUrl}api/Summoner/summonerSiteDTO/by-name/${GetServer(this.server)}/${this.summonerName}`).subscribe(result => {
       this.userData = result,
         console.log(result),
         err => console.log(err),

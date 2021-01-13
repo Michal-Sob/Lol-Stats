@@ -33,7 +33,7 @@
     <None Remove="ClientApp\src\app\models\summoner.model.ts" />
     <None Remove="ClientApp\src\app\models\userSite.model.ts" />
     <None Remove="ClientApp\src\app\Servers.enum.ts" />
-    <None Remove="ClientApp\src\app\summoner-form\Summoner.model.ts" />
+    <None Remove="ClientApp\src\app\summoner-form\SearchedSummoner.model.ts" />
   </ItemGroup>
 
   <ItemGroup>
@@ -43,8 +43,8 @@
     <TypeScriptCompile Include="ClientApp\src\app\models\userSite.model.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\models\summoner.model.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\models\accData.model.ts" />
-    <TypeScriptCompile Include="ClientApp\src\app\servers.enum.ts" />
-    <TypeScriptCompile Include="ClientApp\src\app\summoner-form\Summoner.model.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\util\servers.enum.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\summoner-form\searchedSummoner.model.ts" />
   </ItemGroup>
 
   <ItemGroup>

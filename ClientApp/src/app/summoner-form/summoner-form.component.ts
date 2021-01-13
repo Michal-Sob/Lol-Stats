@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { SearchedSummoner } from './Summoner.model';
+import { SearchedSummoner } from './searchedSummoner.model';
 import { Router } from '@angular/router';
 
 @Component({
