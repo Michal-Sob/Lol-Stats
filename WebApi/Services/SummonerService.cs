@@ -6,6 +6,8 @@ using System.Linq;
 using System.Net.Http;
 using System.Text.Json;
 using System.Threading.Tasks;
+using System.Configuration;
+using System.Collections.Specialized;
 
 namespace MatchStatistic.WebApi.Services
 {
@@ -22,7 +24,7 @@ namespace MatchStatistic.WebApi.Services
             //// GitHub requires a user-agent
             //client.DefaultRequestHeaders.Add("User-Agent",
             //    "HttpClientFactory-Sample");
-            client.DefaultRequestHeaders.Add("X-Riot-Token", "RGAPI-bcbdde05-ed07-404d-b696-660bc767bc83"); //Put your API key
+            client.DefaultRequestHeaders.Add("X-Riot-Token", ConfigurationManager.AppSettings.Get("X-Riot-Token")); // Your API key From Secrets.config
 
             Client = client;
         }

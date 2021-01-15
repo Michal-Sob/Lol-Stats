@@ -27,7 +27,7 @@ namespace MatchStatistic
             {
                 configuration.RootPath = "ClientApp/dist";
             });
-            services.AddHttpClient();
+            services.AddHttpClient<LiveMatchesService>();
             services.AddHttpClient<SummonerService>();
         }
 
