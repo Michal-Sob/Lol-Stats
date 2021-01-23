@@ -35,6 +35,7 @@ namespace MatchStatistic.WebApi.Services
         {
             var response = await Client.GetAsync($"https://{server}.api.riotgames.com/lol/summoner/v4/summoners/by-name/{summName}");
             Console.WriteLine("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
+
             Console.WriteLine(server);
 
             Console.WriteLine(summName);

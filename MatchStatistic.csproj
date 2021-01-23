@@ -50,6 +50,8 @@
 
   <ItemGroup>
     <Folder Include="ClientApp\src\app\services\" />
+    <Folder Include="ClientApp\src\assets\Data\DragonTail-11.1.1\" />
+    <Folder Include="ClientApp\src\assets\Data\ranked-emblems\" />
   </ItemGroup>
 
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">

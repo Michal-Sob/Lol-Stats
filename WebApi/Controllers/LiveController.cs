@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using MatchStatistic.WebApi.Models.Matches;
+using MatchStatistic.WebApi.Models.LiveMatches;
 using MatchStatistic.WebApi.Services;
 using Microsoft.AspNetCore.Mvc;
 

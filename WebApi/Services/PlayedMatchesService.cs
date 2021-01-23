@@ -1,5 +1,4 @@
-﻿using MatchStatistic.WebApi.Models.LiveMatches;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
@@ -8,11 +7,11 @@ using System.Threading.Tasks;
 
 namespace MatchStatistic.WebApi.Services
 {
-	public class LiveMatchesService
+	public class PlayedMatchesService
 	{
 		public HttpClient Client { get; }
 
-		public LiveMatchesService(HttpClient client)
+		public PlayedMatchesService(HttpClient client)
 		{
 			client.DefaultRequestHeaders.Add("X-Riot-Token", ConfigurationManager.AppSettings.Get("X-Riot-Token")); //Put your API key
 
@@ -26,15 +25,6 @@ namespace MatchStatistic.WebApi.Services
 			response.EnsureSuccessStatusCode();
 
 			return await response.Content.ReadAsAsync<CurrentGameInfo>();
-		}
-
-		public async Task<FeaturedGames> GetFeaturedLiveGames(string server)
-		{
-			var response = await Client.GetAsync($"https://{server}.api.riotgames.com/lol/spectator/v4/featured-games");
-
-			response.EnsureSuccessStatusCode();
-
-			return await response.Content.ReadAsAsync<FeaturedGames>();
 		}
 	}
 }
