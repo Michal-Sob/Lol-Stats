@@ -31,6 +31,8 @@
     <None Remove="ClientApp\src\app\models\accData.model.ts" />
     <None Remove="ClientApp\src\app\models\leagueEntry.model.ts" />
     <None Remove="ClientApp\src\app\models\miniseries.model.ts" />
+    <None Remove="ClientApp\src\app\models\PlayedMatches\matchList.model.ts" />
+    <None Remove="ClientApp\src\app\models\PlayedMatches\MatchReference.model.ts" />
     <None Remove="ClientApp\src\app\models\summoner.model.ts" />
     <None Remove="ClientApp\src\app\models\userSite.model.ts" />
     <None Remove="ClientApp\src\app\Servers.enum.ts" />
@@ -41,6 +43,8 @@
     <TypeScriptCompile Include="ClientApp\src\app\account\account.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\models\leagueEntry.model.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\models\miniseries.model.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\models\PlayedMatches\matchList.model.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\models\PlayedMatches\MatchReference.model.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\models\userSite.model.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\models\summoner.model.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\models\accData.model.ts" />
@@ -49,6 +53,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="ClientApp\src\app\models\LiveMatches\" />
     <Folder Include="ClientApp\src\app\services\" />
     <Folder Include="ClientApp\src\assets\Data\DragonTail-11.1.1\" />
     <Folder Include="ClientApp\src\assets\Data\ranked-emblems\" />
