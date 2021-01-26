@@ -16,38 +16,19 @@ var Servers;
     Servers["kr"] = "kr";
 })(Servers || (Servers = {}));
 function GetServer(server) {
-    if (server === 'EUNE') {
-        return Servers.eune;
-    }
-    else if (server === 'EUW') {
-        return Servers.euw;
-    }
-    else if (server === 'NA') {
-        return Servers.na;
-    }
-    else if (server === 'LAN') {
-        return Servers.lan;
-    }
-    else if (server === 'LAS') {
-        return Servers.las;
-    }
-    else if (server === 'BR') {
-        return Servers.br;
-    }
-    else if (server === 'RU') {
-        return Servers.ru;
-    }
-    else if (server === 'TR') {
-        return Servers.euw;
-    }
-    else if (server === 'OCE') {
-        return Servers.oce;
-    }
-    else if (server === 'JP1') {
-        return Servers.jp;
-    }
-    else if (server === 'KR') {
-        return Servers.kr;
+    switch (server) {
+        case "EUNE": return Servers.eune;
+        case "EUW": return Servers.euw;
+        case "NA": return Servers.na;
+        case "LAN": return Servers.lan;
+        case "LAS": return Servers.las;
+        case "BR": return Servers.br;
+        case "RU": return Servers.ru;
+        case "TR": return Servers.tr;
+        case "OCE": return Servers.oce;
+        case "JP": return Servers.jp;
+        case "KR": return Servers.kr;
+        default: Servers.eune;
     }
 }
 exports.GetServer = GetServer;
