@@ -24,7 +24,7 @@ namespace MatchStatistic.WebApi.Services
             //// GitHub requires a user-agent
             //client.DefaultRequestHeaders.Add("User-Agent",
             //    "HttpClientFactory-Sample");
-            client.DefaultRequestHeaders.Add("X-Riot-Token", ConfigurationManager.AppSettings.Get("X-Riot-Token")); // Your API key From Secrets.config
+            client.DefaultRequestHeaders.Add("X-Riot-Token", ConfigurationManager.AppSettings.Get("X-Riot-Token")); // Your API key From App.config
 
             Client = client;
         }
@@ -35,9 +35,7 @@ namespace MatchStatistic.WebApi.Services
         {
             var response = await Client.GetAsync($"https://{server}.api.riotgames.com/lol/summoner/v4/summoners/by-name/{summName}");
             Console.WriteLine("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
-
             Console.WriteLine(server);
-
             Console.WriteLine(summName);
             response.EnsureSuccessStatusCode();
 
@@ -48,20 +46,24 @@ namespace MatchStatistic.WebApi.Services
 		public async Task<LeagueEntryDTO[]> GetLeaguesByName(string server, string summName)
 		{
 			SummonerDTO summDTO = await GetSummByName(server, summName);
-
             var response = await Client.GetAsync($"https://{server}.api.riotgames.com/lol/league/v4/entries/by-summoner/{summDTO.Id}");
-
             response.EnsureSuccessStatusCode();
 
-            Console.WriteLine(await response.Content.ReadAsStringAsync());
-			
+            return await response.Content.ReadAsAsync<LeagueEntryDTO[]>();
+		}
+
+        public async Task<LeagueEntryDTO[]> GetLeaguesBySummId(string server, string summId)
+		{
+            var response = await Client.GetAsync($"https://{server}.api.riotgames.com/lol/league/v4/entries/by-summoner/{summId}");
+            response.EnsureSuccessStatusCode();
+
             return await response.Content.ReadAsAsync<LeagueEntryDTO[]>();
 		}
 
         public async Task<UserSiteDTO> GetAllSummDetailsByName(string server, string summName)
 		{
             var summAcc = await GetSummByName(server, summName);
-            var leagues = await GetLeaguesByName(server, summName);
+            var leagues = await GetLeaguesBySummId(server, summAcc.Id);
 
 			UserSiteDTO userSiteDTO = new UserSiteDTO
 			{

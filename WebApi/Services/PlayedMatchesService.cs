@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MatchStatistic.WebApi.Models.PlayedMatches;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
@@ -18,13 +19,16 @@ namespace MatchStatistic.WebApi.Services
 			Client = client;
 		}
 
-		public async Task<CurrentGameInfo> GetCurrentGameBySummId(string server, string summId)
+		public async Task<MatchListDto> GetCurrentGameBySummId(string server, string summId)
 		{
-			var response = await Client.GetAsync($"https://{server}.api.riotgames.com/lol/spectator/v4/active-games/by-summoner/{summId}");
+
+
+
+			var response = await Client.GetAsync($"https://{server}.api.riotgames.com/lol/matchlists/by-account/{summId}");
 
 			response.EnsureSuccessStatusCode();
 
-			return await response.Content.ReadAsAsync<CurrentGameInfo>();
+			return await response.Content.ReadAsAsync<MatchListDto>();
 		}
 	}
 }
