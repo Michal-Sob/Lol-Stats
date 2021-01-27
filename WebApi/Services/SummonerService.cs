@@ -34,12 +34,10 @@ namespace MatchStatistic.WebApi.Services
         public async Task<SummonerDTO> GetSummByName(string server, string summName)
         {
             var response = await Client.GetAsync($"https://{server}.api.riotgames.com/lol/summoner/v4/summoners/by-name/{summName}");
-            Console.WriteLine("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
-            Console.WriteLine(server);
-            Console.WriteLine(summName);
+            
             response.EnsureSuccessStatusCode();
 
-			Console.WriteLine(await response.Content.ReadAsStringAsync());
+            Console.WriteLine(await response.Content.ReadAsStringAsync());
             return await response.Content.ReadAsAsync<SummonerDTO>();
         }
 
