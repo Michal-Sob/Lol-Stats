@@ -21,8 +21,12 @@
 
   <ItemGroup>
     <!-- Don't publish the SPA source files, but do show them in the project files list -->
+    <Compile Remove="ClientApp\src\app\models\LiveMatches\**" />
     <Content Remove="$(SpaRoot)**" />
+    <Content Remove="ClientApp\src\app\models\LiveMatches\**" />
+    <EmbeddedResource Remove="ClientApp\src\app\models\LiveMatches\**" />
     <None Remove="$(SpaRoot)**" />
+    <None Remove="ClientApp\src\app\models\LiveMatches\**" />
     <None Include="$(SpaRoot)**" Exclude="$(SpaRoot)node_modules\**" />
   </ItemGroup>
 
@@ -53,10 +57,14 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="ClientApp\src\app\models\LiveMatches\" />
+    <Folder Include="ClientApp\src\app\models\NewFolder\" />
     <Folder Include="ClientApp\src\app\services\" />
     <Folder Include="ClientApp\src\assets\Data\DragonTail-11.1.1\" />
     <Folder Include="ClientApp\src\assets\Data\ranked-emblems\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="App.config" />
   </ItemGroup>
 
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">
