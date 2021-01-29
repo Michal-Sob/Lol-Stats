@@ -17,53 +17,63 @@
   </div>
 
   <div class="row">
-    <div class="col"><h3>Last 10 Games</h3></div>
+    <div class="col"><h3>Last 5 Games</h3></div>
   </div>
-  <div class="row">
+
+  
+  <div class="row p-2 bg-dark" *ngFor="let game of listOfMatchData,let i=index">
+    <p> </p>
     <div class="col-2">
-      Typ Gry: {{matchData.gameMode}}
-      Kiedy: {{matchDataTime}}
-      Win/Lose: Win
-      Długość gry: {{matchDataLong }} 
+      <ul>
+        <li>Typ Gry: {{listOfMatchData[i].gameMode}}</li>
+
+        <li>Kiedy: {{matchDataTime[i]}}</li>
+        <li>Win: {{correctSummoner[i].stats.win}}</li>
+        <li>Długość gry: {{matchDataLong[i]}}</li>
+      </ul>
     </div>
     <div class="col-3">
       <h6>kills / deaths / assists</h6>
-      <h2>{{correctSummoner.stats.kills}} / {{correctSummoner.stats.deaths}} / {{correctSummoner.stats.assists}}</h2>
+      <h2>{{correctSummoner[i].stats.kills}} / {{correctSummoner[i].stats.deaths}} / {{correctSummoner[i].stats.assists}}</h2>
 
     </div>
     <div class="col-3">
       <h6>Items:</h6>
       <div class="row row-cols-4">
-        <div class="col"><img height="40" width="40" src="assets/data/dragontail-11.1.1/11.1.1/img/item/{{correctSummoner.stats.item0}}.png"></div>
-        <div class="col"><img height="40" width="40" src="assets/data/dragontail-11.1.1/11.1.1/img/item/{{correctSummoner.stats.item1}}.png"></div>
-        <div class="col"><img height="40" width="40" src="assets/data/dragontail-11.1.1/11.1.1/img/item/{{correctSummoner.stats.item2}}.png"></div>
-        <div class="col"><img height="40" width="40" src="assets/data/dragontail-11.1.1/11.1.1/img/item/{{correctSummoner.stats.item3}}.png"></div>
-        <div class="col"><img height="40" width="40" src="assets/data/dragontail-11.1.1/11.1.1/img/item/{{correctSummoner.stats.item6}}.png"></div>
-        <div class="col"><img height="40" width="40" src="assets/data/dragontail-11.1.1/11.1.1/img/item/{{correctSummoner.stats.item4}}.png"></div>
-        <div class="col"><img height="40" width="40" src="assets/data/dragontail-11.1.1/11.1.1/img/item/{{correctSummoner.stats.item5}}.png"></div>
-
+        
+          <div class="col"><img height="40" width="40" src="assets/data/dragontail-11.1.1/11.1.1/img/item/{{correctSummoner[i].stats.item0}}.png"></div>
+          <div class="col"><img height="40" width="40" src="assets/data/dragontail-11.1.1/11.1.1/img/item/{{correctSummoner[i].stats.item1}}.png"></div>
+          <div class="col"><img height="40" width="40" src="assets/data/dragontail-11.1.1/11.1.1/img/item/{{correctSummoner[i].stats.item2}}.png"></div>
+          <div class="col"><img height="40" width="40" src="assets/data/dragontail-11.1.1/11.1.1/img/item/{{correctSummoner[i].stats.item3}}.png"></div>
+          <div class="col"><img height="40" width="40" src="assets/data/dragontail-11.1.1/11.1.1/img/item/{{correctSummoner[i].stats.item6}}.png"></div>
+          <div class="col"><img height="40" width="40" src="assets/data/dragontail-11.1.1/11.1.1/img/item/{{correctSummoner[i].stats.item4}}.png"></div>
+          <div class="col"><img height="40" width="40" src="assets/data/dragontail-11.1.1/11.1.1/img/item/{{correctSummoner[i].stats.item5}}.png"></div>
+        
+        </div>
       </div>
-    </div>
     <div class="col-4">
       <div class="row row-col-2">
-        <div class="col">
-          Team Blue:
-          <div> {{matchData.participantIdentities[0].player.summonerName}}</div>
-          <div> {{matchData.participantIdentities[1].player.summonerName}}</div>
-          <div> {{matchData.participantIdentities[2].player.summonerName}}</div>
-          <div> {{matchData.participantIdentities[3].player.summonerName}}</div>
-          <div> {{matchData.participantIdentities[4].player.summonerName}}</div>
+        <div class="col text-primary">
+            Team Blue:
+            <div *ngFor="let participant of matchDataParticipants[i],let i=index">
+              <div *ngIf="participant.teamId == 100">
+                {{matchDataParticipantIdentities[0][i].player.summonerName}} 
+              </div>
+            </div>
         </div>
-        <div class="col">
+        <div class="col text-danger">
           Team Red:
-          <div> {{matchData.participantIdentities[5].player.summonerName}}</div>
-          <div> {{matchData.participantIdentities[6].player.summonerName}}</div>
-          <div> {{matchData.participantIdentities[7].player.summonerName}}</div>
-          <div> {{matchData.participantIdentities[8].player.summonerName}}</div>
-          <div> {{matchData.participantIdentities[9].player.summonerName}}</div>
-        </div>
+          <div *ngFor="let participant of matchDataParticipants[i],let i=index">
+            <div *ngIf="participant.teamId == 200">
+              {{matchDataParticipantIdentities[0][i].player.summonerName}}
+            </div>
+          </div>
       </div>
     </div>
   </div>
 </div>
+  <p>
+      
+  </p>
+  </div>
 
