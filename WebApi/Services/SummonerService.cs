@@ -13,7 +13,7 @@ namespace MatchStatistic.WebApi.Services
 {
     public class SummonerService
     {
-        public HttpClient Client { get; }
+        private readonly HttpClient _client;
 
         public SummonerService(HttpClient client)
         {
@@ -26,14 +26,14 @@ namespace MatchStatistic.WebApi.Services
             //    "HttpClientFactory-Sample");
             client.DefaultRequestHeaders.Add("X-Riot-Token", ConfigurationManager.AppSettings.Get("X-Riot-Token")); // Your API key From App.config
 
-            Client = client;
+            _client = client;
         }
 
         
 
         public async Task<SummonerDTO> GetSummByName(string server, string summName)
         {
-            var response = await Client.GetAsync($"https://{server}.api.riotgames.com/lol/summoner/v4/summoners/by-name/{summName}");
+            var response = await _client.GetAsync($"https://{server}.api.riotgames.com/lol/summoner/v4/summoners/by-name/{summName}");
             
             response.EnsureSuccessStatusCode();
 
@@ -44,7 +44,7 @@ namespace MatchStatistic.WebApi.Services
 		public async Task<LeagueEntryDTO[]> GetLeaguesByName(string server, string summName)
 		{
 			SummonerDTO summDTO = await GetSummByName(server, summName);
-            var response = await Client.GetAsync($"https://{server}.api.riotgames.com/lol/league/v4/entries/by-summoner/{summDTO.Id}");
+            var response = await _client.GetAsync($"https://{server}.api.riotgames.com/lol/league/v4/entries/by-summoner/{summDTO.Id}");
             response.EnsureSuccessStatusCode();
 
             return await response.Content.ReadAsAsync<LeagueEntryDTO[]>();
@@ -52,7 +52,7 @@ namespace MatchStatistic.WebApi.Services
 
         public async Task<LeagueEntryDTO[]> GetLeaguesBySummId(string server, string summId)
 		{
-            var response = await Client.GetAsync($"https://{server}.api.riotgames.com/lol/league/v4/entries/by-summoner/{summId}");
+            var response = await _client.GetAsync($"https://{server}.api.riotgames.com/lol/league/v4/entries/by-summoner/{summId}");
             response.EnsureSuccessStatusCode();
 
             return await response.Content.ReadAsAsync<LeagueEntryDTO[]>();

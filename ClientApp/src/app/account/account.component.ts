@@ -5,6 +5,7 @@ import { ActivatedRoute } from "@angular/router";
 import { LeagueEntry } from '../models/leagueEntry.model';
 import { UserSite } from '../models/userSite.model';
 import { GetServer } from '../util/Servers.enum';
+import { matchList } from '../models/PlayedMatches/matchList.model';
 
 @Component({
   selector: 'app-account',
@@ -16,6 +17,7 @@ export class AccountComponent  {
   private summonerName;
 
   public userData: UserSite;
+  public matchHistory: matchList;
 
   constructor(http: HttpClient, @Inject('BASE_URL') baseUrl: string, private route: ActivatedRoute) {
     this.server = this.route.snapshot.paramMap.get("loc");
@@ -23,6 +25,13 @@ export class AccountComponent  {
 
     http.get<UserSite>(`${baseUrl}api/Summoner/summonerSiteDTO/by-name/${GetServer(this.server)}/${this.summonerName}`).subscribe(result => {
       this.userData = result,
+        console.log(result),
+        err => console.log(err),
+        () => console.log("Request Done")
+    })
+
+    http.get<matchList>(`${baseUrl}assets/data/matchHistory.json`).subscribe(result => {
+      this.matchHistory = result,
         console.log(result),
         err => console.log(err),
         () => console.log("Request Done")

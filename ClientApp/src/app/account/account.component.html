@@ -3,11 +3,24 @@
 
   <div class="row">
     <div>
-      <img src="assets/data/dragontail-11.1.1/11.1.1/img/profileicon/{{userData.summoner.profileIconId}}.png">
+      <img height="100" width="100" src="assets/data/dragontail-11.1.1/11.1.1/img/profileicon/{{userData.summoner.profileIconId}}.png">
     </div>
     <div class="'col-9">
-      <h2> {{ userData.summoner.name }} <img height="100" width="100" src="assets/data/ranked-emblems/Emblem_{{userData.leagueEntry[0].tier}}.png"> </h2>
-      
+      <h2> {{ userData.summoner.name }} </h2>
+      <h5>LVL: {{userData.summoner.summonerLevel}}</h5> 
+    </div>
+  </div>
+  <br />
+  <div class="row">
+    <div class="col-2">
+      <p style="text-align:center">SOLO/DUO</p>
+      <img style="text-align:center" height="100" width="100" src="assets/data/ranked-emblems/Emblem_{{userData.leagueEntry[0].tier}}.png">
+      <div>LP: {{userData.leagueEntry[0].leaguePoints}}</div>
+    </div>
+    <div class="col-2">
+      <p style="text-align:center">FLEX</p>
+      <img style="text-align:center" height="100" width="100" src="assets/data/ranked-emblems/Emblem_{{userData.leagueEntry[1].tier}}.png">
+      <div>LP: {{userData.leagueEntry[1].leaguePoints}}</div>
     </div>
   </div>
 
@@ -15,6 +28,19 @@
     <div class="col-3"> Wygrane: {{userData.leagueEntry[0].wins}} Przegrane: {{userData.leagueEntry[0].losses}}</div>
     <div class="col-9"> WinRatio: {{userData.leagueEntry[0].wins/(userData.leagueEntry[0].wins + userData.leagueEntry[0].losses) | percent}}</div>
   </div>
+
+  <!--<div *ngFor="let match of matchHistory.matches">
+    <div class="row">
+      <div class="col-2">
+        <ul>
+          <li>
+            {{matchHistory.matches[0].champion}}
+            {{match.champion}}
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>-->
 
   <div class="row">
     <div class="col"><h3>Last 10 Games</h3></div>
