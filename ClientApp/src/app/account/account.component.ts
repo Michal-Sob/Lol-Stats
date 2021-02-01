@@ -5,6 +5,7 @@ import { ActivatedRoute } from "@angular/router";
 import { LeagueEntry } from '../models/leagueEntry.model';
 import { UserSite } from '../models/userSite.model';
 import { GetServer } from '../util/Servers.enum';
+import { matchList } from '../models/PlayedMatches/matchList.model';
 import ListMatchData from '../../assets/_files/matchhistory/matchhistory1.json';
 
 @Component({
@@ -24,6 +25,7 @@ export class AccountComponent  {
   private listOfMatchData: any[];
 
   public userData: UserSite;
+  public matchHistory: matchList;
 
   constructor(http: HttpClient, @Inject('BASE_URL') baseUrl: string, private route: ActivatedRoute) {
     this.server = this.route.snapshot.paramMap.get("loc");
@@ -45,6 +47,13 @@ export class AccountComponent  {
         () => console.log("Request Done");
       
 
+    })
+
+    http.get<matchList>(`${baseUrl}assets/data/matchHistory.json`).subscribe(result => {
+      this.matchHistory = result,
+        console.log(result),
+        err => console.log(err),
+        () => console.log("Request Done")
     })
 
     

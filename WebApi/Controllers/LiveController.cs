@@ -20,7 +20,7 @@ namespace MatchStatistic.WebApi.Controllers
 		{
 			_liveService = liveService;
 		}
-
+		
 		// GET: api/<LiveController>/currentGame/by-summoner/{server}/{summId}
 		[HttpGet("currentGame/by-summoner/{server}/{summId}")]
 		public async Task<ActionResult<CurrentGameInfo>> GetCurrentGame(string server, string summId)

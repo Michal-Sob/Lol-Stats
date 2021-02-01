@@ -35,6 +35,7 @@
     <None Remove="ClientApp\src\app\models\accData.model.ts" />
     <None Remove="ClientApp\src\app\models\leagueEntry.model.ts" />
     <None Remove="ClientApp\src\app\models\miniseries.model.ts" />
+    <None Remove="ClientApp\src\app\models\PlayedMatches\match.model.ts" />
     <None Remove="ClientApp\src\app\models\PlayedMatches\matchList.model.ts" />
     <None Remove="ClientApp\src\app\models\PlayedMatches\MatchReference.model.ts" />
     <None Remove="ClientApp\src\app\models\summoner.model.ts" />
@@ -47,6 +48,7 @@
     <TypeScriptCompile Include="ClientApp\src\app\account\account.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\models\leagueEntry.model.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\models\miniseries.model.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\models\PlayedMatches\match.model.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\models\PlayedMatches\matchList.model.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\models\PlayedMatches\MatchReference.model.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\models\userSite.model.ts" />
