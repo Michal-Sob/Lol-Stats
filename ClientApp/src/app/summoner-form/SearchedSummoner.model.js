@@ -9,4 +9,4 @@ var SearchedSummoner = /** @class */ (function () {
     return SearchedSummoner;
 }());
 exports.SearchedSummoner = SearchedSummoner;
-//# sourceMappingURL=Summoner.model.js.map
+//# sourceMappingURL=searchedSummoner.model.js.map
