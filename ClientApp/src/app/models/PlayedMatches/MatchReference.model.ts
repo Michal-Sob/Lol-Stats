@@ -1,4 +1,4 @@
-export class MatchReference {
+export class matchReference {
 
   GameId: bigint;
   Role: string;

@@ -1,10 +1,10 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.MatchReference = void 0;
-var MatchReference = /** @class */ (function () {
-    function MatchReference() {
+exports.matchReference = void 0;
+var matchReference = /** @class */ (function () {
+    function matchReference() {
     }
-    return MatchReference;
+    return matchReference;
 }());
-exports.MatchReference = MatchReference;
+exports.matchReference = matchReference;
 //# sourceMappingURL=MatchReference.model.js.map
