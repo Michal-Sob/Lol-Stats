@@ -28,6 +28,8 @@
 
   <ItemGroup>
     <None Remove="ClientApp\src\app\account\account.component.ts" />
+    <None Remove="ClientApp\src\app\live-form\live-form.component.ts" />
+    <None Remove="ClientApp\src\app\live-match\live-match.component.ts" />
     <None Remove="ClientApp\src\app\models\accData.model.ts" />
     <None Remove="ClientApp\src\app\models\leagueEntry.model.ts" />
     <None Remove="ClientApp\src\app\models\LiveMatches\currentGameInfo.model.ts" />
@@ -59,6 +61,8 @@
 
   <ItemGroup>
     <TypeScriptCompile Include="ClientApp\src\app\account\account.component.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\live-form\live-form.component.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\live-match\live-match.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\models\leagueEntry.model.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\models\LiveMatches\currentGameInfo.model.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\models\LiveMatches\currentGameParticipant.model.ts" />

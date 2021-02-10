@@ -1,0 +1,22 @@
+body {
+}
+
+#containerWrapper {
+    height: 90%;
+}
+
+#leftCol {
+    padding-right: 0px;
+}
+
+#middleCol {
+  padding-left: 0px;
+  padding-right: 0px;
+  max-width: 8%;
+}
+
+
+#livebutton {
+  position: absolute;
+  top: 30.8%;
+}

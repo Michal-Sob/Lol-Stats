@@ -1,0 +1,40 @@
+<div class="d-flex align-items-center" id="containerWrapper">
+  <div class="container">
+    <div [hidden]="submitted">
+      <h1>Search your active game</h1>
+      <form (ngSubmit)="onSubmit()" #summonerForm="ngForm">
+        <div class="row">
+          <div class="col-4" id="leftCol">
+            <div class="form-group">
+              <label for="name"></label>
+              <input type="text" class="form-control input rounded-0" id="name" placeholder="Summoner Name"
+                      required
+                      [(ngModel)]="model.name" name="name"
+                      #name="ngModel">
+              <div [hidden]="name.valid || name.pristine"
+                    class="alert alert-danger">
+                Name is required
+              </div>
+            </div>
+          </div>
+          <div class="col-2" id="middleCol" style="">
+            <div class="form-group">
+              <label for="serverlocation"></label>
+              <select class="form-control input rounded-0" id="serverLocation" required
+                      [(ngModel)]="model.serverLocation" name="serverLocation"
+                      #name="ngModel">
+                <option *ngFor="let loc of serverLocations" [value]="loc">{{loc}}</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-2" style=" padding-left: 0px;">
+            <div style="relative">
+              <label for="liveButton"></label>
+              <button type="submit" class="btn btn-success input rounded-0" id="livebutton" [disabled]="!summonerForm.form.valid">Submit</button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
