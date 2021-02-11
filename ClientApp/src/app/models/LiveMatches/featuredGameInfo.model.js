@@ -7,4 +7,4 @@ var FeaturedGameInfo = /** @class */ (function () {
     return FeaturedGameInfo;
 }());
 exports.FeaturedGameInfo = FeaturedGameInfo;
-//# sourceMappingURL=featuredGameInfo.js.map
+//# sourceMappingURL=featuredGameInfo.model.js.map

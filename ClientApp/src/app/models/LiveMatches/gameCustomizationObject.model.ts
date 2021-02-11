@@ -1,4 +1,4 @@
 export class GameCustomizationObject {
-  Category: string;
-  Content: string;
+  category: string;
+  content: string;
 }

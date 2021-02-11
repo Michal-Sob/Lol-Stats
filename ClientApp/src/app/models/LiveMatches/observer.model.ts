@@ -1,3 +1,3 @@
 export class Observer {
-  EncryptionKey: string;
+  encryptionKey: string;
 }

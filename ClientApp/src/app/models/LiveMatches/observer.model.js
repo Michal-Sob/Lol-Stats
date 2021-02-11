@@ -7,4 +7,4 @@ var Observer = /** @class */ (function () {
     return Observer;
 }());
 exports.Observer = Observer;
-//# sourceMappingURL=observer.js.map
+//# sourceMappingURL=observer.model.js.map

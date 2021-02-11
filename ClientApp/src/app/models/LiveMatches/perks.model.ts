@@ -1,5 +1,5 @@
 export class Perks {
-  MyProperty: number[];
-  PerkStyle: number;
-  PerkSubStyle: number;
+  myProperty: number[];
+  perkStyle: number;
+  perkSubStyle: number;
 }

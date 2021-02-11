@@ -3,15 +3,15 @@ import { CurrentGameParticipant } from "./currentGameParticipant.model";
 import { Observer } from "./observer.model";
 
 export class CurrentGameInfo {
-  GameId: number;
-  GameType: string;
-  GameStartTime: number;
-  MapId: number;
-  GameLength: number;
-  PlatformId: string;
-  GameMode: string;
-  BannedChampions: BannedChampion[];
-  GameQueueConfigId: number;
-  Observers: Observer;
-  Participants: CurrentGameParticipant[];
+  gameId: number;
+  gameType: string;
+  gameStartTime: number;
+  mapId: number;
+  gameLength: number;
+  platformId: string;
+  gameMode: string;
+  bannedChampions: BannedChampion[];
+  gameQueueConfigId: number;
+  observers: Observer;
+  participants: CurrentGameParticipant[];
 }

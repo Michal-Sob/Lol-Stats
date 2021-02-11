@@ -1,9 +1,9 @@
 export class Participant {
-  Bot: boolean;
-  Spell2Id: number;
-  ProfileIconId: number;
-  SummonerName: string;
-  ChampionId: number;
-  TeamId: number;
-  Spell1Id: number;
+  bot: boolean;
+  spell2Id: number;
+  profileIconId: number;
+  summonerName: string;
+  championId: number;
+  teamId: number;
+  spell1Id: number;
 }
