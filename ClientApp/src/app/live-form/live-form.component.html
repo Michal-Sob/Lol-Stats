@@ -1,40 +1,99 @@
-<div class="d-flex align-items-center" id="containerWrapper">
-  <div class="container">
-    <div [hidden]="submitted">
-      <h1>Search your active game</h1>
-      <form (ngSubmit)="onSubmit()" #summonerForm="ngForm">
-        <div class="row">
-          <div class="col-4" id="leftCol">
-            <div class="form-group">
-              <label for="name"></label>
-              <input type="text" class="form-control input rounded-0" id="name" placeholder="Summoner Name"
-                      required
-                      [(ngModel)]="model.name" name="name"
-                      #name="ngModel">
-              <div [hidden]="name.valid || name.pristine"
-                    class="alert alert-danger">
-                Name is required
-              </div>
-            </div>
-          </div>
-          <div class="col-2" id="middleCol" style="">
-            <div class="form-group">
-              <label for="serverlocation"></label>
-              <select class="form-control input rounded-0" id="serverLocation" required
-                      [(ngModel)]="model.serverLocation" name="serverLocation"
-                      #name="ngModel">
-                <option *ngFor="let loc of serverLocations" [value]="loc">{{loc}}</option>
-              </select>
-            </div>
-          </div>
-          <div class="col-2" style=" padding-left: 0px;">
-            <div style="relative">
-              <label for="liveButton"></label>
-              <button type="submit" class="btn btn-success input rounded-0" id="livebutton" [disabled]="!summonerForm.form.valid">Submit</button>
+<div class="d-md-flex h-md-100 align-items-center">
+
+  <!-- First Half -->
+
+  <div class="col-md-5 p-0 bg-black h-md-100">
+    <div class="text-white d-md-flex align-items-center h-100 p-5 text-center justify-content-center">
+      <div class="logoarea pt-5 pb-5">
+        <div class="d-flex align-items-center" id="containerWrapper">
+          <div class="container">
+            <div [hidden]="submitted">
+              <h1 class="align-items-left">Active game</h1>
+              <form (ngSubmit)="onSubmit()" #summonerForm="ngForm">
+                <div class="row">
+                  <div class="col-7" id="leftCol">
+                    <div class="form-group">
+                      <label for="name"></label>
+                      <input type="text" class="form-control input rounded-0" id="name" placeholder="Summoner Name"
+                             required
+                             [(ngModel)]="model.name" name="name"
+                             #name="ngModel">
+                      <div [hidden]="name.valid || name.pristine"
+                           class="alert alert-danger">
+                        Name is required
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-3" id="middleCol" style="">
+                    <div class="form-group">
+                      <label for="serverlocation"></label>
+                      <select class="form-control input rounded-0" id="serverLocation" required
+                              [(ngModel)]="model.serverLocation" name="serverLocation"
+                              #name="ngModel">
+                        <option *ngFor="let loc of serverLocations" [value]="loc">{{loc}}</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col-2" style=" padding-left: 0px;">
+                    <label for="liveButton"></label>
+                    <button type="submit" class="btn btn-success input rounded-0" id="livebutton" [disabled]="!summonerForm.form.valid">Find</button>
+                  </div>
+                </div>
+              </form>
             </div>
           </div>
         </div>
-      </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Second Half -->
+
+  <div class="col-md-7 p-0 bg-black h-md-100 loginarea">
+    <div class="container py-5 bg-faded">
+      <h1 class="text-center">Live Games</h1>
+      <div class="card-columns">
+        <div *ngFor="let featuredGame of featuredGames">
+          <div *ngFor="let game of featuredGame.gameList; index as i">
+            <div class="card">
+              <div class="card-header bg-secondary text-center">Solo/duo</div>
+              <div class="card-body">
+                <div class="container-fluid">
+                  <div class="row">
+                    <div class="col-sm-6 col-md-6 col-lg-6 bg-success text-right">
+                      <!-- TEAM 1 -->
+                      <div *ngFor="let participant of game.participants; index as i">
+                        <div *ngIf="participant.teamId == 100">
+                          {{participant.summonerName}}
+                          <img height="30" width="30" src="assets/data/dragontail-11.1.1/11.1.1/img/profileicon/{{participant.profileIconId}}.png">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-sm-6 col-md-6 col-lg-6 bg-success ">
+                      <!-- TEAM 2 -->
+                      <div *ngFor="let participant of game.participants; index as i">
+                        <div *ngIf="participant.teamId == 200">
+                          <img height="30" width="30" src="assets/data/dragontail-11.1.1/11.1.1/img/profileicon/{{participant.profileIconId}}.png">
+                          {{participant.summonerName}}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
+
+
+
+
+
+
+
+
+

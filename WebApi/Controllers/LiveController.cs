@@ -30,7 +30,7 @@ namespace MatchStatistic.WebApi.Controllers
 			return results;
 		}
 
-		// GET: api/<LiveController>/currentGame/by-server/{server}
+		// GET: api/<LiveController>/FeaturedGames/by-server/{server}
 		[HttpGet("FeaturedGames/by-server/{server}")]
 		public async Task<ActionResult<FeaturedGames>> GetFeaturedGames(string server)
 		{
