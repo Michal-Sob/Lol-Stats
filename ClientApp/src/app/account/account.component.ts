@@ -4,7 +4,7 @@ import { Summoner } from '../models/summoner.model';
 import { ActivatedRoute } from "@angular/router";
 import { LeagueEntry } from '../models/leagueEntry.model';
 import { UserSite } from '../models/userSite.model';
-import { GetServer } from '../util/Servers.enum';
+import { GetServer } from '../../util/Servers.enum';
 import { matchList } from '../models/PlayedMatches/matchList.model';
 import ListMatchData from '../../assets/_files/matchhistory/matchhistory1.json';
 

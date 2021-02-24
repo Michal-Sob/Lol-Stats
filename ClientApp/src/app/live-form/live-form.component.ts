@@ -5,7 +5,8 @@ import { cwd } from "process";
 import { FeaturedGameInfo } from "../models/LiveMatches/featuredGameInfo.model";
 import { FeaturedGames } from "../models/LiveMatches/featuredGames.model";
 import { SearchedSummoner } from "../summoner-form/searchedSummoner.model";
-import { GetServer } from "../util/Servers.enum";
+import { GetServer } from "../../util/Servers.enum";
+
 
 @Component({
   selector: 'app-live-form',

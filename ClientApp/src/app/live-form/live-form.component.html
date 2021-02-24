@@ -36,7 +36,7 @@
                   </div>
                   <div class="col-2" style=" padding-left: 0px;">
                     <label for="liveButton"></label>
-                    <button type="submit" class="btn btn-success input rounded-0" id="livebutton" [disabled]="!summonerForm.form.valid">Find</button>
+                    <button type="submit" class="btn btn-success input rounded-0" id="livebutton" [disabled]="!summonerForm.form.valid">Shoot</button>
                   </div>
                 </div>
               </form>
@@ -56,7 +56,13 @@
         <div *ngFor="let featuredGame of featuredGames">
           <div *ngFor="let game of featuredGame.gameList; index as i">
             <div class="card">
-              <div class="card-header bg-secondary text-center">Solo/duo</div>
+              <div *ngIf="game.gameMode == 'CLASSIC'; else cardHeaderElse">
+                <div class="card-header bg-secondary text-center">Solo/duo</div>
+              </div>
+              <ng-template #cardHeaderElse>
+                <div class="card-header bg-secondary text-center">ARAM</div>
+              </ng-template>
+              <!--<div class="card-header bg-secondary text-center">Solo/duo</div>-->
               <div class="card-body">
                 <div class="container-fluid">
                   <div class="row">
@@ -65,7 +71,7 @@
                       <div *ngFor="let participant of game.participants; index as i">
                         <div *ngIf="participant.teamId == 100">
                           {{participant.summonerName}}
-                          <img height="30" width="30" src="assets/data/dragontail-11.1.1/11.1.1/img/profileicon/{{participant.profileIconId}}.png">
+                          <img height="30" width="30" src="assets/data/DragonTail/version/img/profileicon/{{participant.profileIconId}}.png">
                         </div>
                       </div>
                     </div>
@@ -73,7 +79,7 @@
                       <!-- TEAM 2 -->
                       <div *ngFor="let participant of game.participants; index as i">
                         <div *ngIf="participant.teamId == 200">
-                          <img height="30" width="30" src="assets/data/dragontail-11.1.1/11.1.1/img/profileicon/{{participant.profileIconId}}.png">
+                          <img height="30" width="30" src="assets/data/DragonTail/version/img/profileicon/{{participant.profileIconId}}.png">
                           {{participant.summonerName}}
                         </div>
                       </div>
