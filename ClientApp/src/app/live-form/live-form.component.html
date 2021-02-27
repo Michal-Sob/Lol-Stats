@@ -55,39 +55,43 @@
       <div class="card-columns">
         <div *ngFor="let featuredGame of featuredGames">
           <div *ngFor="let game of featuredGame.gameList; index as i">
-            <div class="card">
-              <div *ngIf="game.gameMode == 'CLASSIC'; else cardHeaderElse">
-                <div class="card-header bg-secondary text-center">Solo/duo</div>
-              </div>
-              <ng-template #cardHeaderElse>
-                <div class="card-header bg-secondary text-center">ARAM</div>
-              </ng-template>
-              <!--<div class="card-header bg-secondary text-center">Solo/duo</div>-->
-              <div class="card-body">
-                <div class="container-fluid">
-                  <div class="row">
-                    <div class="col-sm-6 col-md-6 col-lg-6 bg-success text-right">
-                      <!-- TEAM 1 -->
-                      <div *ngFor="let participant of game.participants; index as i">
-                        <div *ngIf="participant.teamId == 100">
-                          {{participant.summonerName}}
-                          <img height="30" width="30" src="assets/data/DragonTail/version/img/profileicon/{{participant.profileIconId}}.png">
+            <!--<a [routerLink]="['live/:loc/:summonerName']">-->
+            <!--<a href="live/EUNE/{{ game.participants[0].summonerName }}" class="custom-card">-->
+              <div class="card">
+                <div *ngIf="game.gameMode == 'CLASSIC'; else cardHeaderElse">
+                  <div class="card-header bg-secondary text-center">Solo/duo</div>
+                </div>
+                <ng-template #cardHeaderElse>
+                  <div class="card-header bg-secondary text-center">ARAM</div>
+                </ng-template>
+                <!--<div class="card-header bg-secondary text-center">Solo/duo</div>-->
+                <div class="card-body">
+                  <div class="container-fluid">
+                    <div class="row">
+                      <div class="col-sm-6 col-md-6 col-lg-6 bg-success text-right">
+                        <!-- TEAM 1 -->
+                        <div *ngFor="let participant of game.participants; index as i">
+                          <div *ngIf="participant.teamId == 100">
+                            {{participant.summonerName}}
+                            <img height="31" width="31" src="assets/data/DragonTail/version/img/champion/{{participant.champion.image.full}}">
+                          </div>
                         </div>
                       </div>
-                    </div>
-                    <div class="col-sm-6 col-md-6 col-lg-6 bg-success ">
-                      <!-- TEAM 2 -->
-                      <div *ngFor="let participant of game.participants; index as i">
-                        <div *ngIf="participant.teamId == 200">
-                          <img height="30" width="30" src="assets/data/DragonTail/version/img/profileicon/{{participant.profileIconId}}.png">
-                          {{participant.summonerName}}
+                      <div class="col-sm-6 col-md-6 col-lg-6 bg-success ">
+                        <!-- TEAM 2 -->
+                        <div *ngFor="let participant of game.participants; index as i">
+                          <div *ngIf="participant.teamId == 200">
+                            <img height="31" width="31" src="assets/data/DragonTail/version/img/champion/{{participant.champion.image.full}}">
+                            {{participant.summonerName}}
+                          </div>
                         </div>
                       </div>
                     </div>
                   </div>
+                  <a href="live/EUNE/{{ game.participants[0].summonerName }}" class="stretched-link"></a>
                 </div>
               </div>
-            </div>
+            <!--</a>-->
           </div>
         </div>
       </div>

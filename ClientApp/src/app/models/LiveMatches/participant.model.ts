@@ -1,3 +1,5 @@
+import { ChampionBasic } from "../Assets/Champion/championBasic.model";
+
 export class Participant {
   bot: boolean;
   spell2Id: number;
@@ -6,4 +8,5 @@ export class Participant {
   championId: number;
   teamId: number;
   spell1Id: number;
+  champion: ChampionBasic;
 }

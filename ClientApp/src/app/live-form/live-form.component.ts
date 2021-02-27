@@ -1,11 +1,13 @@
 import { HttpClient } from "@angular/common/http";
-import { Component, Inject } from "@angular/core";
+import { Component, Inject, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
 import { cwd } from "process";
 import { FeaturedGameInfo } from "../models/LiveMatches/featuredGameInfo.model";
 import { FeaturedGames } from "../models/LiveMatches/featuredGames.model";
 import { SearchedSummoner } from "../summoner-form/searchedSummoner.model";
 import { GetServer } from "../../util/Servers.enum";
+import { DragonTailService } from "../services/dragon-tail.service";
+import { ChampionBasic } from "../models/Assets/Champion/championBasic.model";
 
 
 @Component({
@@ -14,16 +16,25 @@ import { GetServer } from "../../util/Servers.enum";
   styleUrls: ['./live-form.component.css']
 })
 
-export class LiveFormComponent {
+export class LiveFormComponent implements OnInit {
 
   public featuredGames: FeaturedGames[];
   public GamesList: FeaturedGameInfo[];
 
+  private http: HttpClient;
+  private dragonTail: DragonTailService;
+  private baseUrl: string;
 
-  constructor(http: HttpClient, @Inject('BASE_URL') baseUrl: string, private router: Router //instanciate a router
+  constructor(http: HttpClient, dragonTail: DragonTailService, @Inject('BASE_URL') baseUrl: string, private router: Router //instanciate a router
   ) {
-    this.GetFeaturedGames(2, "EUW", http, baseUrl)
+    this.http = http;
+    this.dragonTail = dragonTail;
+    this.baseUrl = baseUrl;
   };
+
+  async ngOnInit() {
+    await this.GetFeaturedGames(2, "EUW", this.http, this.baseUrl)
+  }
 
   serverLocations = ['EUW', 'EUNE',
     'NA', 'KR', 'OCE', 'JP', 'RU', 'LAS', 'LAN', 'BR'];
@@ -38,7 +49,7 @@ export class LiveFormComponent {
     this.router.navigateByUrl('/live/' + this.model.serverLocation + '/' + this.model.name);
   }
 
-  AddTooGameList(featuredGames: FeaturedGames) {
+  AddToGameList(featuredGames: FeaturedGames) {
       for (let game of featuredGames.gameList) {
         if (game.gameMode == "CLASSIC") {
           this.GamesList[this.GamesList.length] = game;
@@ -47,75 +58,40 @@ export class LiveFormComponent {
     return this.GamesList
   }
 
-  GetFeaturedGames(ammount: number, server: string, http: HttpClient, baseUrl: string) {
+  async GetFeaturedGames(ammount: number, server: string, http: HttpClient, baseUrl: string) {
 
     this.featuredGames = new Array;
     this.GamesList = new Array;
 
-    for (var i = 0; i < ammount; i++) {
-      if (i == 0) {
-        http.get<FeaturedGames>(`${baseUrl}api/Live/FeaturedGames/by-server/${GetServer(server)}`).subscribe(result => {
-          this.featuredGames[0] = result,
-            console.log(result),
-            console.log(this.AddTooGameList(this.featuredGames[this.featuredGames.length - 1]))
-            console.log(this.featuredGames[0].gameList[0].participants[0].summonerName),
-            err => console.log(err),
-            () => console.log("Request Done")
-        })
-      }
-      else {
-        http.get<FeaturedGames>(`${baseUrl}api/Live/FeaturedGames/by-server/${GetServer("NA")}`).subscribe(result => {
-          this.featuredGames[this.featuredGames.length] = result,
-            console.log(this.featuredGames.length),
-            console.log(this.featuredGames),
-            console.log(this.AddTooGameList(this.featuredGames[this.featuredGames.length - 1]))
-            console.log(result),
-            console.log(this.featuredGames[this.featuredGames.length - 1].gameList[0].participants[0].summonerName),
-            err => console.log(err),
-            () => console.log("Request Done")
-        })
-      }
+    let servers = ["EUW", "NA", "EUNE"]
+
+    for (let i = 0; i < servers.length; i++) {
+      http.get<FeaturedGames>(`${baseUrl}api/Live/FeaturedGames/by-server/${GetServer(servers[i])}`).subscribe(result => {
+        this.featuredGames[this.featuredGames.length] = result,
+          console.log(result),
+          console.log(this.AddToGameList(this.featuredGames[this.featuredGames.length - 1])),
+          console.log(this.featuredGames[this.featuredGames.length - 1].gameList[0].participants[0].summonerName),
+
+          this.featuredGames.length == servers.length - 1 ? this.setPlayerChampionInfo(this.featuredGames, this.dragonTail) : console.log(),
+          err => console.log(err),
+          () => console.log("Request Done")
+      })
     }
 
-
-
-    //while (this.GamesList.length < 2) {
-    //  for (var i = 0; i < ammount; i++) {
-    //    if (this.featuredGames.length > 1 || i == 0) {
-    //      if (i == 0) {
-    //        http.get<FeaturedGames>(`${baseUrl}api/Live/FeaturedGames/by-server/${GetServer(server)}`).subscribe(result => {
-    //          this.featuredGames[0] = result,
-    //            console.log(result),
-    //            console.log(this.featuredGames[0].gameList[0].participants[0].summonerName),
-    //            err => console.log(err),
-    //            () => console.log("Request Done")
-    //        })
-    //      }
-    //      else {
-    //        http.get<FeaturedGames>(`${baseUrl}api/Live/FeaturedGames/by-server/${GetServer("NA")}`).subscribe(result => {
-    //          this.featuredGames[this.featuredGames.length] = result,
-    //            console.log(this.featuredGames.length),
-    //            console.log(this.featuredGames),
-    //            console.log(result),
-    //            console.log(this.featuredGames[0].gameList[0].participants[0].summonerName),
-    //            err => console.log(err),
-    //            () => console.log("Request Done")
-    //        })
-    //      }
-    //    }
-    //  }
-    //  for (let gamesArray of this.featuredGames) {
-    //    for (let game of gamesArray.gameList) {
-    //      console.log(game)
-    //      console.log(game.gameMode)
-    //      console.log(this.GamesList)
-    //      if (game.gameMode == "CLASSIC") {
-    //        this.GamesList[this.GamesList.length] = game;
-    //      }
-    //    }
-    //  }
-    //}
-
     console.log(this.GamesList)
+  }
+
+  setPlayerChampionInfo(featuredGames: FeaturedGames[], dragontail: DragonTailService) {
+    let championsImgsPath: ChampionBasic[] = new Array();
+
+    for (let singleRequest of featuredGames)
+      for (let game of singleRequest.gameList)
+        for (let player of game.participants) {
+          championsImgsPath.push(dragontail.championById(player.championId));
+          player.champion = dragontail.championById(player.championId)
+        }
+
+    console.log(championsImgsPath)
+    return championsImgsPath;
   }
 }
